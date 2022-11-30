@@ -15,6 +15,7 @@ const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filterValue = useSelector(getFilterInput);
   const filtredContacts = handleFilterChange(contacts, filterValue.filter);
+  console.log(filtredContacts);
   return (
     <ul>
       {filtredContacts.map(contact => {
