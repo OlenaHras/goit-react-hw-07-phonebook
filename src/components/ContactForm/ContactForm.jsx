@@ -27,7 +27,6 @@ export function ContactForm() {
     e.preventDefault();
     const form = e.target;
     const uniqueEl = contacts.find(el => el.name === form.name.value);
-    console.log({ name, phone });
     if (!uniqueEl) {
       dispatch(addContact({ name, phone }));
     }
