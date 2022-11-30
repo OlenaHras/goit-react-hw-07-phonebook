@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
+import { useSelector } from 'react-redux';
 import { getError, getIsLoading } from 'redux/selectors';
 import { ContactForm } from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
@@ -9,13 +7,9 @@ import Filter from './Filter/Filter';
 import { Container } from './App.styled';
 
 export default function App() {
-  const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
   return (
     <Container>
       <h1>Phonebook</h1>
@@ -24,7 +18,7 @@ export default function App() {
       <Filter />
       {isLoading && !error && <b>Loading contacts...</b>}
       {error && <b>{error}</b>}
-      {!isLoading && <ContactList />}
+      <ContactList />
     </Container>
   );
 }
